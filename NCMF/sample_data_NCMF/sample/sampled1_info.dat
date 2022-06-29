@@ -1,0 +1,18 @@
+node.dat
+TYPE	MEANING
+0	ent0
+1	ent1
+2	ent2
+
+-----------------------------------------------
+link.dat
+LINK	START	END	MEANING
+0	0	1	ent0-and-ent1
+1	0	2	ent0-and-ent2
+
+-----------------------------------------------
+label.dat
+TYPE	CLASS	MEANING
+0	0	ent0
+1	1	ent1
+2	2	ent2

@@ -1,0 +1,46 @@
+Nodes {'1', '0'} Edges {'2'}
+Inc 0.0
+Nodes {'1', '0'} Edges {'1'}
+Inc 0.0
+Nodes {'0'} Edges {'1', '0'}
+Inc 40.0886
+Nodes {'1', '0'} Edges {'1', '0'}
+Inc 40.0886
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 41.9792
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 41.9792
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 41.9792
+Nodes {'1', '0'} Edges {'1', '0'}
+Inc 80.1772
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 83.9584
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 83.9584
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 83.9584
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 83.9584
+Nodes {'1', '0'} Edges {'2', '0'}
+Inc 85.3855
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 167.45329999999998
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 167.4533
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 167.4533
+Nodes {'1', '0'} Edges {'1', '2'}
+Inc 167.9168
+Nodes {'1', '0'} Edges {'2', '0'}
+Inc 170.771
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 249.5211
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 249.5211
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 294.818
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 294.818
+Nodes {'1', '0'} Edges {'1', '2', '0'}
+Inc 418.86499999999995

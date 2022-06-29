@@ -1,0 +1,20 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+dataset="MIMIC"
+folder="data/${dataset}/"
+link_file="${folder}link.dat"
+emb_file="${folder}emb.dat"
+
+make
+
+processes=2 # number of processes
+size=50 # embedding dimension
+negative=5 # number of negative samples
+alpha=0.025 # initial learning rate
+window=3 # max window length
+length=80 # length of each random walk
+num=20 # number of random walks starting from each node
+
+python3 src/main.py ${link_file} ${emb_file} -d ${size} -n ${negative} -a ${alpha} -p ${processes} -w ${window} -l ${length} -k ${num}

@@ -1,0 +1,4 @@
+center_node_type,other_node_i_type,other_node_j_type,edge_type_i,edge_type_j,inconsistancy
+0,0,0,1,0,35.8713
+0,0,0,1,2,12.8947
+0,0,0,0,2,22.1055
