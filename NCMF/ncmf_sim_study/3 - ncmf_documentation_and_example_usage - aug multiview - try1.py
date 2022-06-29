@@ -5,7 +5,7 @@
 
 
 import sys
-sys.path.append("..")
+#sys.path.append("..")
 #
 import pprint
 import numpy as np
@@ -15,7 +15,7 @@ import itertools
 import os
 import pprint
 #
-from src_sim.ncmf import ncmf
+from src.ncmf import ncmf
 #
 import os
 import torch
