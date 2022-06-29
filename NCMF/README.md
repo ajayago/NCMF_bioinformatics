@@ -5,18 +5,18 @@ This folder contains all relevant folders to obtain NCMF embeddings for various 
 
 NCMF input and output:
 =====================
-All input files must be present in the folder ../datasets/NCMF/<dataset>/. The following files are necessary for NCMF to work:
-1. sampled<sample_no>_node.dat
-2. sampled<sample_no>_link.dat
-3. sampled<sample_no>_link.dat.test
-4. sampled<sample_no>_label.dat
-5. sampled<sample_no>_label.dat.test
-6. sampled<sample_no>_meta.dat
-7. sampled<sample_no>_info.dat
+All input files must be present in the folder ./datasets/<dataset_name>/. The following files are necessary for NCMF to work:
+1. sampled<sample_number>_node.dat
+2. sampled<sample_number>_link.dat
+3. sampled<sample_number>_link.dat.test
+4. sampled<sample_number>_label.dat
+5. sampled<sample_number>_label.dat.test
+6. sampled<sample_number>_meta.dat
+7. sampled<sample_number>_info.dat
 
-The output from NCMF is the embedding file called emb_<dataset>_<sample_no>.dat at the location ../datasets/NCMF/<dataset>/
+The output from NCMF is the embedding file called emb_<dataset_name>_<sample_number>.dat at the location ./datasets/<dataset_name>/
 
-The results of the link prediction evaluation task is recorded in the file ../datasets/NCMF/<dataset>/sampled<sample_no>_record.dat
+The results of the link prediction evaluation task is recorded in the file ./datasets/<dataset_name>/sampled<sample_number>_record.dat
 
 Folder structure and hierarchy:
 ===============================
@@ -25,7 +25,11 @@ Folder structure and hierarchy:
 
 |
 
- -- doc/ 
+ -- data_preparation/ 
+
+|
+
+ -- datasets/
 
 |
 
@@ -35,7 +39,9 @@ Folder structure and hierarchy:
 
 -- experiments/
 
-doc folder - holds scripts to run NCMF for arbitrary datasets
+data_preparation folder - holds scripts to convert data in the form of triplets and matrices into a format that can be used by NCMF
+
+datasets folder - holds all samples generated from the datasets on which experiments were carried out 
 
 src folder - contains all relevant functions and classes to perform NCMF training and evaluation
 
@@ -44,96 +50,74 @@ experiments folder - contains the files to run representation learning for vario
 Representation Learning:
 ========================
 
-In the steps below, the values of the placeholders can take one of the following values:
-<dataset> can be {"Polypharmacy", "PubMed", "MIMIC"}
-<sample_no> can be {1, 2, 3} for Polypharmacy and PubMed and {1, 3, 4} for MIMIC
-<algorithm> can be "NCMF"
-
 Set up the environment using conda by running the command:
 
 ```
 conda env create -f environment.yml
-conda activate ncmf
 ```
 
-1. Place the input data files at the path ../datasets/NCMF/<dataset>/
+1. Place the input data files at the path ./datasets/<dataset_name>/
 
 2. Launch the file ncmf_documentation_and_example_usage.ipynb using Jupyter notebook and update the sample number, dataset name and path to the dataset directory as needed. Update the hyperparameters if needed. Execute the entire notebook.
 
-3. The reconstructed matrices are saved at the path ../datasets/NCMF/<dataset>/<sample_no>. Ensure this path exists prior to running the notebook.
+3. The reconstructed matrices are saved at the path ./datasets/<dataset_name>/<sample_number>. Ensure this path exists prior to running the notebook.
 
 4. Evaluate the AUC and MRR scores of the embeddings learnt by running a link prediction task, using the notebook ncmf_evaluation_example_usage.ipynb
-
-Hyperparameter Tuning with Ax:
-==============================
-
-Set up the environment using conda by running the command:
-
-```
-conda env create -f environment_ax.yml
-conda activate ax
-```
-
-1. Place the input data files at the path ../datasets/NCMF/<dataset>/
-
-2. Launch the file ncmf_documentation_and_example_usage_with_ax.ipynb using Jupyter notebook and update the sample number, dataset name and path to the dataset directory as needed. Update the hyperparameters to be tuned and the range to be explored. Execute the entire notebook.
-
-3. The reconstructed matrices are saved at the path ../datasets/NCMF/<dataset>/<sample_no>. Ensure this path exists prior to running the notebook.
 
 Experiments:
 ===========
 
+Copy the files to the outer directory before executing them.
+
+ncmf_documentation_and_example_usage_with_ax.ipynb -- This notebook can be used to combine Ax for finding the best set of hyperparameters.
+
 The folder ./experiments has the following files to reproduce the NCMF representation learning for various datasets:
 
-#### MIMIC dataset
+ncmf_simulated.ipynb -- Representation learning for the simulated dataset experiment
 
-1. Ensure the data files are available at the path ../datasets/NCMF/MIMIC/. Ensure the folders 1, 3 and 4 exist in this path - the embeddings will be saved here.
+ncmf_mimic.ipynb -- Representation learning for the MIMIC dataset
 
-2. From the ./experiments folder, launch the notebook ncmf_mimic.ipynb and update the sample number (1, 3, 4 are the allowed values), and the hyperparameters(if needed). Execute the entire notebook.
+ncmf_polypharmacy.ipynb -- Representation learning for the Polypharmacy dataset
 
-3. Check the embeddings by running a link prediction task, using the notebook ncmf_evaluation_example_usage.ipynb, after updating the sample number and dataset name.
+ncmf_pubmed.ipynb -- Representation learning for the PubMed dataset
 
-4. Repeat the above three steps for all samples.
+ncmf_evaluation_simulated.ipynb -- For the evaluation of the embeddings learnt from the simulated dataset experiment
 
-5. To average over all 3 samples, navigate to src/ and run the command
-`python averaging_results.py MIMIC NCMF`
+rmse_visualization_simdata.ipynb -- For visualization of the RMSE values for the simulated dataset
 
-#### Polypharmacy dataset - PolyP1
+Simulation study:
+================
 
-1. Ensure the data files are available at the path ../datasets/NCMF/ESP/. Ensure the folder 1 exists in this path - embeddings will be saved here.
+- We generated the following 3 datasets 
 
-2. To run DCA on the drug x drug side-effect matrix, follow the README at data_preparation/dca path, after preparing the original data using the notebook data_preparation_NCMF_esp_pseudo_polypharmacy.ipynb.
+`ncmf_sim_study/ncmf_sim_data/dict_name_dataset_1.pkl`
+`ncmf_sim_study/ncmf_sim_data/dict_name_dataset_2.pkl`
+`ncmf_sim_study/ncmf_sim_data/dict_name_dataset_3.pkl`
+using the scripts below (by changing the random seed to 0, 10 and 20 respectively in ncmf_sim_data_generator.py)
 
-3. After DCA execution, to run NCMF on the drug x latent matrix, drug x protein and protein x protein matrices, use data_preparation/data_prep_ESP.ipynb to get the files needed for NCMF.
+`ncmf_sim_study/"1 - syn_data_gen - generate required datasets - try 1 - final.ipynb"`
+`ncmf_sim_study/ncmf_sim_data_generator.py`
 
-4. Execute the notebook experiments/ncmf_esp.ipynb to get drug and protein representations.
+- The results from the paper can be obtained by running the following scripts for each dataset (by changing the dataset filepath in "2 - data_preparation_from_matrices...ipynb") in the same order to obtain the results for NCMF and the baselines: CMF, gCMF, DCMF and DFMF.
+	- ncmf_sim_study/"2 - data_preparation_from_matrices_with_sampling- aug multiview setup - test - try1 - final- ALL datasets - try1.ipynb"
+	- ncmf_sim_study/"3 - ncmf_documentation_and_example_usage - aug multiview - try1.ipynb"
+	- ncmf_sim_study/"3 - ncmf_documentation_and_example_usage - aug multiview - try1.py"
+	- ncmf_sim_study/"4 -  ncmf_sim_results_gen - try 2 final.ipynb"
+	- ncmf_sim_study/"5 - data_prep_cmf - 4 - final.ipynb"
+	- ncmf_sim_study/6_cmf_1.R
+	- ncmf_sim_study/6_gcmf_1.R
+	- ncmf_sim_study/"7 -  cmf_sim_results_gen - try2 - final.ipynb"
+	- ncmf_sim_study/"7 -  gcmf_sim_results_gen - try2 - final.ipynb"
+	- ncmf_sim_study/dcmf/doc/"8 - ncmf_dcmf_expt - try 2 - final.ipynb"
+	- ncmf_sim_study/dcmf/doc/"9 - dcmf_sim_results_gen - try1 - final.ipynb"
+	- ncmf_sim_study/dcmf/doc/"10 - ncmf_dfmf_expt - try 2 - final.ipynb"
+	- ncmf_sim_study/dcmf/doc/"11 - dfmf_sim_results_gen - try1 - final.ipynb"
+	- ncmf_sim_study/dcmf/doc/"12 - aggregate results - 1.ipynb"
 
-5. To evaluate the representations learnt, run the notebook ESP_evaluation.ipynb
+- After obtaining the results for the 3 datasets, to obtain the aggregated results shown in the paper:
+	- Copy "ncmf-main/NCMF/ncmf_sim_study/ncmf_sim_data/run_\#" to "ncmf_sim_study/sim_results_charting/run_\#", where \# is the dataset number 1, 2 or 3
+	- Run "ncmf_sim_study/sim_results_charting/chart - agg 2 - try 2 - final.ipynb"
 
-#### Polypharmacy dataset - PolyP2
-
-1. Ensure the data files are available at the path ../datasets/NCMF/Polypharmacy/. Ensure the folders 1, 2 and 3 exist in this path - the embeddings will be saved here.
-
-2. From the ./experiments folder, launch the notebook ncmf_polypharmacy.ipynb and update the sample number (1, 2, 3 are the allowed values),  and the hyperparameters(if needed). Execute the entire notebook.
-
-3. Check the embeddings by running a link prediction task, using the notebook ncmf_evaluation_example_usage.ipynb, after updating the sample number and datas
-et name.
-
-4. Repeat the above three steps for all samples.
-
-5. To average over all 3 samples, navigate to src/ and run the command
-`python averaging_results.py Polypharmacy NCMF`
-
-#### PubMed dataset
-
-1. Ensure the data files are available at the path ../datasets/NCMF/PubMed/. Ensure the folders 1, 2 and 3 exist in this path - the embeddings will be saved here.
-
-2. From the ./experiments folder, launch the notebook ncmf_pubmed.ipynb and update the sample number (1, 2, 3 are the allowed values),  and the hyperparameters(if needed). Execute the entire notebook.
-
-3. Check the embeddings by running a link prediction task, using the notebook ncmf_evaluation_example_usage.ipynb, after updating the sample number and datas
-et name.
-
-4. Repeat the above three steps for all samples.
-
-5. To average over all 3 samples, navigate to src/ and run the command
-`python averaging_results.py PubMed NCMF`
+- Note:
+	- To run CMF and gCMF, `R` must be installed along with the packages `CMF` and `itertools`
+	- To run DFMF, `python 2.7` must be used

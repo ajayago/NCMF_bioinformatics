@@ -1,0 +1,1828 @@
+dataset_name:  dt1
+#
+X0.shape:  (200, 500)
+X1.shape:  (200, 300)
+X2.shape:  (200, 400)
+X3.shape:  (700, 500)
+X4.shape:  (600, 300)
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF:
+---
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+## fold_num:  1  ##
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+dcmf - model construction - start
+__input_transformation - start
+#
+concatenated-matrix construction...
+e_id:  e0
+X_id_list:  ['X0', 'X1', 'X2']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([200, 1200])
+---
+e_id:  e1
+X_id_list:  ['X0', 'X3']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([500, 900])
+---
+e_id:  e2
+X_id_list:  ['X1', 'X4']
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([300, 800])
+---
+e_id:  e3
+X_id_list:  ['X2']
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([400, 200])
+---
+e_id:  e4
+X_id_list:  ['X3']
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([700, 500])
+---
+e_id:  e5
+X_id_list:  ['X4']
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([600, 300])
+---
+#
+concatenated-matrix chunking...
+#
+e_id:  e0 , min_num_datapoints:  200 , num_chunks:  10
+e_id:  e3 , min_features:  200 , k:  100
+#
+e_id:  e0  C_dict[e_id].shape:  torch.Size([200, 1200])
+C_temp_chunks_list[0].shape:  torch.Size([20, 1200])
+---
+e_id:  e1  C_dict[e_id].shape:  torch.Size([500, 900])
+C_temp_chunks_list[0].shape:  torch.Size([50, 900])
+---
+e_id:  e2  C_dict[e_id].shape:  torch.Size([300, 800])
+C_temp_chunks_list[0].shape:  torch.Size([30, 800])
+---
+e_id:  e3  C_dict[e_id].shape:  torch.Size([400, 200])
+C_temp_chunks_list[0].shape:  torch.Size([40, 200])
+---
+e_id:  e4  C_dict[e_id].shape:  torch.Size([700, 500])
+C_temp_chunks_list[0].shape:  torch.Size([70, 500])
+---
+e_id:  e5  C_dict[e_id].shape:  torch.Size([600, 300])
+C_temp_chunks_list[0].shape:  torch.Size([60, 300])
+---
+#
+creating pytorch variables of input matrices...
+#
+__input_transformation - end
+__network_construction - start
+__network_construction - end
+dcmf - model construction - end
+#
+#
+dcmf.fit - start
+epoch:  1  total loss L:  75.49933815002441  Took  0.3  secs.
+epoch:  2  total loss L:  58.75207757949829  Took  0.1  secs.
+epoch:  3  total loss L:  52.59518337249756  Took  0.1  secs.
+epoch:  4  total loss L:  48.23026657104492  Took  0.1  secs.
+epoch:  5  total loss L:  45.8158073425293  Took  0.1  secs.
+epoch:  6  total loss L:  43.71249008178711  Took  0.1  secs.
+epoch:  7  total loss L:  42.1690559387207  Took  0.1  secs.
+epoch:  8  total loss L:  40.93764901161194  Took  0.1  secs.
+epoch:  9  total loss L:  39.787598848342896  Took  0.1  secs.
+epoch:  10  total loss L:  38.6913001537323  Took  0.1  secs.
+epoch:  11  total loss L:  37.63289761543274  Took  0.1  secs.
+epoch:  12  total loss L:  36.59921073913574  Took  0.1  secs.
+epoch:  13  total loss L:  35.584824085235596  Took  0.1  secs.
+epoch:  14  total loss L:  34.587929487228394  Took  0.1  secs.
+epoch:  15  total loss L:  33.61249661445618  Took  0.1  secs.
+epoch:  16  total loss L:  32.661271810531616  Took  0.1  secs.
+epoch:  17  total loss L:  31.739184856414795  Took  0.1  secs.
+epoch:  18  total loss L:  30.84959602355957  Took  0.1  secs.
+epoch:  19  total loss L:  29.998822450637817  Took  0.1  secs.
+epoch:  20  total loss L:  29.19325542449951  Took  0.1  secs.
+epoch:  21  total loss L:  28.451756715774536  Took  0.1  secs.
+epoch:  22  total loss L:  27.797402381896973  Took  0.1  secs.
+epoch:  23  total loss L:  27.266066074371338  Took  0.1  secs.
+epoch:  24  total loss L:  26.95338010787964  Took  0.1  secs.
+epoch:  25  total loss L:  27.07390570640564  Took  0.1  secs.
+epoch:  26  total loss L:  28.112568855285645  Took  0.1  secs.
+epoch:  27  total loss L:  31.13577699661255  Took  0.1  secs.
+epoch:  28  total loss L:  29.51803708076477  Took  0.1  secs.
+epoch:  29  total loss L:  32.0579047203064  Took  0.1  secs.
+epoch:  30  total loss L:  36.358521699905396  Took  0.1  secs.
+epoch:  31  total loss L:  34.22068405151367  Took  0.1  secs.
+epoch:  32  total loss L:  30.881916284561157  Took  0.1  secs.
+epoch:  33  total loss L:  48.608622550964355  Took  0.1  secs.
+epoch:  34  total loss L:  37.54142117500305  Took  0.1  secs.
+epoch:  35  total loss L:  32.594064712524414  Took  0.1  secs.
+epoch:  36  total loss L:  28.979763507843018  Took  0.1  secs.
+epoch:  37  total loss L:  27.114099264144897  Took  0.1  secs.
+epoch:  38  total loss L:  26.471122980117798  Took  0.1  secs.
+epoch:  39  total loss L:  25.857322216033936  Took  0.1  secs.
+epoch:  40  total loss L:  25.35683822631836  Took  0.1  secs.
+epoch:  41  total loss L:  25.24930477142334  Took  0.1  secs.
+epoch:  42  total loss L:  24.648743152618408  Took  0.1  secs.
+epoch:  43  total loss L:  24.16650080680847  Took  0.1  secs.
+epoch:  44  total loss L:  23.638818502426147  Took  0.1  secs.
+epoch:  45  total loss L:  23.22302556037903  Took  0.1  secs.
+epoch:  46  total loss L:  22.8574321269989  Took  0.1  secs.
+epoch:  47  total loss L:  22.52627730369568  Took  0.1  secs.
+epoch:  48  total loss L:  22.2159321308136  Took  0.1  secs.
+epoch:  49  total loss L:  21.930769443511963  Took  0.1  secs.
+epoch:  50  total loss L:  21.67255401611328  Took  0.1  secs.
+epoch:  51  total loss L:  21.44137144088745  Took  0.1  secs.
+epoch:  52  total loss L:  21.237056255340576  Took  0.1  secs.
+epoch:  53  total loss L:  21.055877923965454  Took  0.1  secs.
+epoch:  54  total loss L:  20.898321390151978  Took  0.1  secs.
+epoch:  55  total loss L:  20.781723380088806  Took  0.1  secs.
+epoch:  56  total loss L:  20.736748456954956  Took  0.1  secs.
+epoch:  57  total loss L:  20.782744646072388  Took  0.1  secs.
+epoch:  58  total loss L:  20.916499376296997  Took  0.1  secs.
+epoch:  59  total loss L:  21.2036030292511  Took  0.1  secs.
+epoch:  60  total loss L:  22.14719247817993  Took  0.1  secs.
+epoch:  61  total loss L:  26.298625230789185  Took  0.1  secs.
+epoch:  62  total loss L:  33.004945516586304  Took  0.1  secs.
+epoch:  63  total loss L:  31.040921926498413  Took  0.1  secs.
+epoch:  64  total loss L:  28.799796104431152  Took  0.1  secs.
+epoch:  65  total loss L:  29.706300258636475  Took  0.1  secs.
+epoch:  66  total loss L:  36.01734757423401  Took  0.1  secs.
+epoch:  67  total loss L:  53.91334056854248  Took  0.1  secs.
+epoch:  68  total loss L:  55.62093138694763  Took  0.1  secs.
+epoch:  69  total loss L:  44.6277596950531  Took  0.1  secs.
+epoch:  70  total loss L:  30.843272924423218  Took  0.1  secs.
+epoch:  71  total loss L:  26.674928903579712  Took  0.1  secs.
+epoch:  72  total loss L:  24.742928504943848  Took  0.1  secs.
+epoch:  73  total loss L:  23.04339051246643  Took  0.1  secs.
+epoch:  74  total loss L:  23.04886031150818  Took  0.1  secs.
+epoch:  75  total loss L:  22.035884141921997  Took  0.1  secs.
+epoch:  76  total loss L:  21.918010473251343  Took  0.1  secs.
+epoch:  77  total loss L:  21.471864700317383  Took  0.1  secs.
+epoch:  78  total loss L:  21.102410078048706  Took  0.1  secs.
+epoch:  79  total loss L:  20.884884119033813  Took  0.1  secs.
+epoch:  80  total loss L:  20.63088583946228  Took  0.1  secs.
+epoch:  81  total loss L:  20.366549015045166  Took  0.1  secs.
+epoch:  82  total loss L:  20.13171374797821  Took  0.1  secs.
+epoch:  83  total loss L:  19.931265830993652  Took  0.1  secs.
+epoch:  84  total loss L:  19.773131370544434  Took  0.1  secs.
+epoch:  85  total loss L:  19.677644848823547  Took  0.1  secs.
+epoch:  86  total loss L:  19.6710786819458  Took  0.1  secs.
+epoch:  87  total loss L:  19.722387075424194  Took  0.1  secs.
+epoch:  88  total loss L:  20.193564295768738  Took  0.1  secs.
+epoch:  89  total loss L:  19.648308753967285  Took  0.1  secs.
+epoch:  90  total loss L:  19.32478129863739  Took  0.1  secs.
+epoch:  91  total loss L:  19.25425374507904  Took  0.1  secs.
+epoch:  92  total loss L:  19.69552767276764  Took  0.1  secs.
+epoch:  93  total loss L:  20.628875732421875  Took  0.1  secs.
+epoch:  94  total loss L:  21.65231740474701  Took  0.1  secs.
+epoch:  95  total loss L:  26.209774017333984  Took  0.1  secs.
+epoch:  96  total loss L:  25.07121217250824  Took  0.1  secs.
+epoch:  97  total loss L:  23.213321685791016  Took  0.1  secs.
+epoch:  98  total loss L:  21.727142691612244  Took  0.1  secs.
+epoch:  99  total loss L:  20.470684051513672  Took  0.1  secs.
+epoch:  100  total loss L:  21.038237690925598  Took  0.1  secs.
+#
+dcmf.fit - end
+dataset_name:  ds1
+#
+X0.shape:  (200, 500)
+X1.shape:  (200, 300)
+X2.shape:  (200, 400)
+X3.shape:  (700, 500)
+X4.shape:  (600, 300)
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF:
+---
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+## fold_num:  1  ##
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+dcmf - model construction - start
+__input_transformation - start
+#
+concatenated-matrix construction...
+e_id:  e0
+X_id_list:  ['X0', 'X1', 'X2']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([200, 1200])
+---
+e_id:  e1
+X_id_list:  ['X0', 'X3']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([500, 900])
+---
+e_id:  e2
+X_id_list:  ['X1', 'X4']
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([300, 800])
+---
+e_id:  e3
+X_id_list:  ['X2']
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([400, 200])
+---
+e_id:  e4
+X_id_list:  ['X3']
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([700, 500])
+---
+e_id:  e5
+X_id_list:  ['X4']
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([600, 300])
+---
+#
+concatenated-matrix chunking...
+#
+e_id:  e0 , min_num_datapoints:  200 , num_chunks:  10
+e_id:  e3 , min_features:  200 , k:  100
+#
+e_id:  e0  C_dict[e_id].shape:  torch.Size([200, 1200])
+C_temp_chunks_list[0].shape:  torch.Size([20, 1200])
+---
+e_id:  e1  C_dict[e_id].shape:  torch.Size([500, 900])
+C_temp_chunks_list[0].shape:  torch.Size([50, 900])
+---
+e_id:  e2  C_dict[e_id].shape:  torch.Size([300, 800])
+C_temp_chunks_list[0].shape:  torch.Size([30, 800])
+---
+e_id:  e3  C_dict[e_id].shape:  torch.Size([400, 200])
+C_temp_chunks_list[0].shape:  torch.Size([40, 200])
+---
+e_id:  e4  C_dict[e_id].shape:  torch.Size([700, 500])
+C_temp_chunks_list[0].shape:  torch.Size([70, 500])
+---
+e_id:  e5  C_dict[e_id].shape:  torch.Size([600, 300])
+C_temp_chunks_list[0].shape:  torch.Size([60, 300])
+---
+#
+creating pytorch variables of input matrices...
+#
+__input_transformation - end
+__network_construction - start
+__network_construction - end
+dcmf - model construction - end
+#
+#
+dcmf.fit - start
+epoch:  1  total loss L:  54.43794870376587  Took  0.1  secs.
+epoch:  2  total loss L:  42.987640380859375  Took  0.1  secs.
+epoch:  3  total loss L:  39.238462686538696  Took  0.1  secs.
+epoch:  4  total loss L:  37.18272399902344  Took  0.1  secs.
+epoch:  5  total loss L:  35.6422553062439  Took  0.1  secs.
+epoch:  6  total loss L:  33.66929602622986  Took  0.1  secs.
+epoch:  7  total loss L:  32.51608180999756  Took  0.1  secs.
+epoch:  8  total loss L:  31.498682498931885  Took  0.1  secs.
+epoch:  9  total loss L:  30.55106544494629  Took  0.1  secs.
+epoch:  10  total loss L:  29.68075394630432  Took  0.1  secs.
+epoch:  11  total loss L:  28.828320503234863  Took  0.1  secs.
+epoch:  12  total loss L:  27.98802423477173  Took  0.1  secs.
+epoch:  13  total loss L:  27.170963048934937  Took  0.1  secs.
+epoch:  14  total loss L:  26.38830018043518  Took  0.1  secs.
+epoch:  15  total loss L:  25.6409432888031  Took  0.1  secs.
+epoch:  16  total loss L:  24.921351194381714  Took  0.1  secs.
+epoch:  17  total loss L:  24.229443073272705  Took  0.1  secs.
+epoch:  18  total loss L:  23.567365884780884  Took  0.1  secs.
+epoch:  19  total loss L:  22.940889358520508  Took  0.1  secs.
+epoch:  20  total loss L:  22.355802059173584  Took  0.1  secs.
+epoch:  21  total loss L:  21.82206439971924  Took  0.1  secs.
+epoch:  22  total loss L:  21.363384008407593  Took  0.1  secs.
+epoch:  23  total loss L:  21.039065957069397  Took  0.1  secs.
+epoch:  24  total loss L:  21.0345641374588  Took  0.1  secs.
+epoch:  25  total loss L:  22.25121808052063  Took  0.1  secs.
+epoch:  26  total loss L:  25.325968503952026  Took  0.1  secs.
+epoch:  27  total loss L:  25.71702289581299  Took  0.1  secs.
+epoch:  28  total loss L:  24.41947865486145  Took  0.1  secs.
+epoch:  29  total loss L:  28.277949810028076  Took  0.1  secs.
+epoch:  30  total loss L:  39.588462352752686  Took  0.1  secs.
+epoch:  31  total loss L:  32.32555961608887  Took  0.1  secs.
+epoch:  32  total loss L:  25.721246004104614  Took  0.1  secs.
+epoch:  33  total loss L:  23.356053829193115  Took  0.1  secs.
+epoch:  34  total loss L:  20.971102237701416  Took  0.1  secs.
+epoch:  35  total loss L:  20.29087543487549  Took  0.1  secs.
+epoch:  36  total loss L:  19.918235659599304  Took  0.1  secs.
+epoch:  37  total loss L:  19.58372712135315  Took  0.1  secs.
+epoch:  38  total loss L:  19.324958324432373  Took  0.1  secs.
+epoch:  39  total loss L:  19.06165587902069  Took  0.1  secs.
+epoch:  40  total loss L:  18.981710195541382  Took  0.1  secs.
+epoch:  41  total loss L:  18.792639136314392  Took  0.1  secs.
+epoch:  42  total loss L:  19.150843381881714  Took  0.1  secs.
+epoch:  43  total loss L:  20.048100113868713  Took  0.1  secs.
+epoch:  44  total loss L:  18.439534187316895  Took  0.1  secs.
+epoch:  45  total loss L:  18.145628333091736  Took  0.1  secs.
+epoch:  46  total loss L:  17.609927773475647  Took  0.1  secs.
+epoch:  47  total loss L:  17.208364963531494  Took  0.1  secs.
+epoch:  48  total loss L:  16.939521431922913  Took  0.1  secs.
+epoch:  49  total loss L:  16.662918090820312  Took  0.1  secs.
+epoch:  50  total loss L:  16.456008076667786  Took  0.1  secs.
+epoch:  51  total loss L:  16.25398361682892  Took  0.1  secs.
+epoch:  52  total loss L:  16.148756861686707  Took  0.1  secs.
+epoch:  53  total loss L:  16.209107637405396  Took  0.1  secs.
+epoch:  54  total loss L:  16.636367797851562  Took  0.1  secs.
+epoch:  55  total loss L:  17.764666199684143  Took  0.1  secs.
+epoch:  56  total loss L:  19.571635127067566  Took  0.1  secs.
+epoch:  57  total loss L:  25.713468313217163  Took  0.1  secs.
+epoch:  58  total loss L:  25.0540269613266  Took  0.1  secs.
+epoch:  59  total loss L:  22.58393907546997  Took  0.1  secs.
+epoch:  60  total loss L:  21.60077214241028  Took  0.1  secs.
+epoch:  61  total loss L:  19.22096347808838  Took  0.1  secs.
+epoch:  62  total loss L:  18.29037868976593  Took  0.1  secs.
+epoch:  63  total loss L:  18.438180446624756  Took  0.1  secs.
+epoch:  64  total loss L:  17.68778097629547  Took  0.1  secs.
+epoch:  65  total loss L:  17.085258722305298  Took  0.1  secs.
+epoch:  66  total loss L:  16.378437876701355  Took  0.1  secs.
+epoch:  67  total loss L:  16.421436190605164  Took  0.1  secs.
+epoch:  68  total loss L:  16.215771794319153  Took  0.1  secs.
+epoch:  69  total loss L:  16.562228083610535  Took  0.1  secs.
+epoch:  70  total loss L:  16.052342534065247  Took  0.1  secs.
+epoch:  71  total loss L:  15.604402303695679  Took  0.1  secs.
+epoch:  72  total loss L:  15.339736223220825  Took  0.1  secs.
+epoch:  73  total loss L:  15.156618356704712  Took  0.1  secs.
+epoch:  74  total loss L:  15.027569770812988  Took  0.1  secs.
+epoch:  75  total loss L:  14.929002285003662  Took  0.1  secs.
+epoch:  76  total loss L:  14.857980728149414  Took  0.1  secs.
+epoch:  77  total loss L:  14.829699754714966  Took  0.1  secs.
+epoch:  78  total loss L:  14.824788928031921  Took  0.1  secs.
+epoch:  79  total loss L:  14.90291965007782  Took  0.1  secs.
+epoch:  80  total loss L:  15.511831879615784  Took  0.1  secs.
+epoch:  81  total loss L:  17.595332860946655  Took  0.1  secs.
+epoch:  82  total loss L:  20.066468000411987  Took  0.1  secs.
+epoch:  83  total loss L:  21.783014178276062  Took  0.1  secs.
+epoch:  84  total loss L:  24.35575556755066  Took  0.1  secs.
+epoch:  85  total loss L:  20.449309825897217  Took  0.1  secs.
+epoch:  86  total loss L:  20.13920521736145  Took  0.1  secs.
+epoch:  87  total loss L:  19.657398343086243  Took  0.1  secs.
+epoch:  88  total loss L:  19.225748777389526  Took  0.1  secs.
+epoch:  89  total loss L:  18.029073119163513  Took  0.1  secs.
+epoch:  90  total loss L:  18.35561454296112  Took  0.1  secs.
+epoch:  91  total loss L:  18.81235921382904  Took  0.1  secs.
+epoch:  92  total loss L:  19.97848951816559  Took  0.1  secs.
+epoch:  93  total loss L:  22.726297736167908  Took  0.1  secs.
+epoch:  94  total loss L:  27.16863465309143  Took  0.1  secs.
+epoch:  95  total loss L:  36.6287624835968  Took  0.1  secs.
+epoch:  96  total loss L:  28.687090396881104  Took  0.1  secs.
+epoch:  97  total loss L:  21.612032651901245  Took  0.1  secs.
+epoch:  98  total loss L:  18.405866742134094  Took  0.1  secs.
+epoch:  99  total loss L:  18.438867926597595  Took  0.1  secs.
+epoch:  100  total loss L:  16.54524040222168  Took  0.1  secs.
+#
+dcmf.fit - end
+dataset_name:  ds2
+#
+X0.shape:  (200, 500)
+X1.shape:  (200, 300)
+X2.shape:  (200, 400)
+X3.shape:  (700, 500)
+X4.shape:  (600, 300)
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF:
+---
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+## fold_num:  1  ##
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+dcmf - model construction - start
+__input_transformation - start
+#
+concatenated-matrix construction...
+e_id:  e0
+X_id_list:  ['X0', 'X1', 'X2']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([200, 1200])
+---
+e_id:  e1
+X_id_list:  ['X0', 'X3']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([500, 900])
+---
+e_id:  e2
+X_id_list:  ['X1', 'X4']
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([300, 800])
+---
+e_id:  e3
+X_id_list:  ['X2']
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([400, 200])
+---
+e_id:  e4
+X_id_list:  ['X3']
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([700, 500])
+---
+e_id:  e5
+X_id_list:  ['X4']
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([600, 300])
+---
+#
+concatenated-matrix chunking...
+#
+e_id:  e0 , min_num_datapoints:  200 , num_chunks:  10
+e_id:  e3 , min_features:  200 , k:  100
+#
+e_id:  e0  C_dict[e_id].shape:  torch.Size([200, 1200])
+C_temp_chunks_list[0].shape:  torch.Size([20, 1200])
+---
+e_id:  e1  C_dict[e_id].shape:  torch.Size([500, 900])
+C_temp_chunks_list[0].shape:  torch.Size([50, 900])
+---
+e_id:  e2  C_dict[e_id].shape:  torch.Size([300, 800])
+C_temp_chunks_list[0].shape:  torch.Size([30, 800])
+---
+e_id:  e3  C_dict[e_id].shape:  torch.Size([400, 200])
+C_temp_chunks_list[0].shape:  torch.Size([40, 200])
+---
+e_id:  e4  C_dict[e_id].shape:  torch.Size([700, 500])
+C_temp_chunks_list[0].shape:  torch.Size([70, 500])
+---
+e_id:  e5  C_dict[e_id].shape:  torch.Size([600, 300])
+C_temp_chunks_list[0].shape:  torch.Size([60, 300])
+---
+#
+creating pytorch variables of input matrices...
+#
+__input_transformation - end
+__network_construction - start
+__network_construction - end
+dcmf - model construction - end
+#
+#
+dcmf.fit - start
+epoch:  1  total loss L:  52.21876239776611  Took  0.1  secs.
+epoch:  2  total loss L:  39.009236097335815  Took  0.1  secs.
+epoch:  3  total loss L:  36.478031873703  Took  0.1  secs.
+epoch:  4  total loss L:  33.74520993232727  Took  0.1  secs.
+epoch:  5  total loss L:  31.90863561630249  Took  0.1  secs.
+epoch:  6  total loss L:  30.41234254837036  Took  0.1  secs.
+epoch:  7  total loss L:  29.814072847366333  Took  0.1  secs.
+epoch:  8  total loss L:  28.59540033340454  Took  0.1  secs.
+epoch:  9  total loss L:  27.573251962661743  Took  0.1  secs.
+epoch:  10  total loss L:  26.597219705581665  Took  0.1  secs.
+epoch:  11  total loss L:  25.727044582366943  Took  0.1  secs.
+epoch:  12  total loss L:  24.969070434570312  Took  0.1  secs.
+epoch:  13  total loss L:  24.244767665863037  Took  0.1  secs.
+epoch:  14  total loss L:  23.60835862159729  Took  0.1  secs.
+epoch:  15  total loss L:  22.943402767181396  Took  0.1  secs.
+epoch:  16  total loss L:  22.39594554901123  Took  0.1  secs.
+epoch:  17  total loss L:  21.938422679901123  Took  0.1  secs.
+epoch:  18  total loss L:  21.497199296951294  Took  0.1  secs.
+epoch:  19  total loss L:  21.260470151901245  Took  0.1  secs.
+epoch:  20  total loss L:  21.874010920524597  Took  0.1  secs.
+epoch:  21  total loss L:  21.336318254470825  Took  0.1  secs.
+epoch:  22  total loss L:  21.569729208946228  Took  0.1  secs.
+epoch:  23  total loss L:  20.130276679992676  Took  0.1  secs.
+epoch:  24  total loss L:  20.00373339653015  Took  0.1  secs.
+epoch:  25  total loss L:  20.34377384185791  Took  0.1  secs.
+epoch:  26  total loss L:  21.148918628692627  Took  0.1  secs.
+epoch:  27  total loss L:  21.971004843711853  Took  0.1  secs.
+epoch:  28  total loss L:  20.127136945724487  Took  0.1  secs.
+epoch:  29  total loss L:  18.254866123199463  Took  0.1  secs.
+epoch:  30  total loss L:  17.827895879745483  Took  0.1  secs.
+epoch:  31  total loss L:  17.604952812194824  Took  0.1  secs.
+epoch:  32  total loss L:  17.696690797805786  Took  0.1  secs.
+epoch:  33  total loss L:  17.191479802131653  Took  0.1  secs.
+epoch:  34  total loss L:  17.495439887046814  Took  0.1  secs.
+epoch:  35  total loss L:  18.005724787712097  Took  0.1  secs.
+epoch:  36  total loss L:  18.894301295280457  Took  0.1  secs.
+epoch:  37  total loss L:  19.1426659822464  Took  0.1  secs.
+epoch:  38  total loss L:  18.0162091255188  Took  0.1  secs.
+epoch:  39  total loss L:  17.625502586364746  Took  0.1  secs.
+epoch:  40  total loss L:  16.665665864944458  Took  0.1  secs.
+epoch:  41  total loss L:  16.340166926383972  Took  0.1  secs.
+epoch:  42  total loss L:  16.256605863571167  Took  0.1  secs.
+epoch:  43  total loss L:  16.429593205451965  Took  0.1  secs.
+epoch:  44  total loss L:  18.010932326316833  Took  0.1  secs.
+epoch:  45  total loss L:  19.653369307518005  Took  0.1  secs.
+epoch:  46  total loss L:  18.659539341926575  Took  0.1  secs.
+epoch:  47  total loss L:  15.236111283302307  Took  0.1  secs.
+epoch:  48  total loss L:  15.352995753288269  Took  0.1  secs.
+epoch:  49  total loss L:  15.343658685684204  Took  0.1  secs.
+epoch:  50  total loss L:  16.035673022270203  Took  0.1  secs.
+epoch:  51  total loss L:  18.387476444244385  Took  0.1  secs.
+epoch:  52  total loss L:  19.17074418067932  Took  0.1  secs.
+epoch:  53  total loss L:  19.173195600509644  Took  0.1  secs.
+epoch:  54  total loss L:  16.40283501148224  Took  0.1  secs.
+epoch:  55  total loss L:  15.647890329360962  Took  0.1  secs.
+epoch:  56  total loss L:  15.181174278259277  Took  0.1  secs.
+epoch:  57  total loss L:  14.585587859153748  Took  0.1  secs.
+epoch:  58  total loss L:  14.502091407775879  Took  0.1  secs.
+epoch:  59  total loss L:  15.23080050945282  Took  0.1  secs.
+epoch:  60  total loss L:  15.284465789794922  Took  0.1  secs.
+epoch:  61  total loss L:  14.68601942062378  Took  0.1  secs.
+epoch:  62  total loss L:  14.085546374320984  Took  0.1  secs.
+epoch:  63  total loss L:  13.864159107208252  Took  0.1  secs.
+epoch:  64  total loss L:  13.612100720405579  Took  0.1  secs.
+epoch:  65  total loss L:  13.534130334854126  Took  0.1  secs.
+epoch:  66  total loss L:  13.66304886341095  Took  0.1  secs.
+epoch:  67  total loss L:  14.171743631362915  Took  0.1  secs.
+epoch:  68  total loss L:  14.772299528121948  Took  0.1  secs.
+epoch:  69  total loss L:  16.366146087646484  Took  0.1  secs.
+epoch:  70  total loss L:  16.77481198310852  Took  0.1  secs.
+epoch:  71  total loss L:  16.40472710132599  Took  0.1  secs.
+epoch:  72  total loss L:  15.654396772384644  Took  0.1  secs.
+epoch:  73  total loss L:  15.71789014339447  Took  0.1  secs.
+epoch:  74  total loss L:  14.551322340965271  Took  0.1  secs.
+epoch:  75  total loss L:  15.274789333343506  Took  0.1  secs.
+epoch:  76  total loss L:  15.596551895141602  Took  0.1  secs.
+epoch:  77  total loss L:  16.398730993270874  Took  0.1  secs.
+epoch:  78  total loss L:  15.321063995361328  Took  0.1  secs.
+epoch:  79  total loss L:  14.878786325454712  Took  0.1  secs.
+epoch:  80  total loss L:  14.742128372192383  Took  0.1  secs.
+epoch:  81  total loss L:  14.69277548789978  Took  0.1  secs.
+epoch:  82  total loss L:  14.8775794506073  Took  0.1  secs.
+epoch:  83  total loss L:  14.966882467269897  Took  0.1  secs.
+epoch:  84  total loss L:  15.376919746398926  Took  0.1  secs.
+epoch:  85  total loss L:  15.454720616340637  Took  0.1  secs.
+epoch:  86  total loss L:  15.17932939529419  Took  0.1  secs.
+epoch:  87  total loss L:  14.955695748329163  Took  0.1  secs.
+epoch:  88  total loss L:  15.974080085754395  Took  0.1  secs.
+epoch:  89  total loss L:  16.880078196525574  Took  0.1  secs.
+epoch:  90  total loss L:  19.214977145195007  Took  0.1  secs.
+epoch:  91  total loss L:  23.83019983768463  Took  0.1  secs.
+epoch:  92  total loss L:  29.00774359703064  Took  0.1  secs.
+epoch:  93  total loss L:  21.255562782287598  Took  0.1  secs.
+epoch:  94  total loss L:  17.207335472106934  Took  0.1  secs.
+epoch:  95  total loss L:  16.145957469940186  Took  0.1  secs.
+epoch:  96  total loss L:  16.20967936515808  Took  0.1  secs.
+epoch:  97  total loss L:  14.425729036331177  Took  0.1  secs.
+epoch:  98  total loss L:  15.158556461334229  Took  0.1  secs.
+epoch:  99  total loss L:  14.660696744918823  Took  0.1  secs.
+epoch:  100  total loss L:  14.228633880615234  Took  0.1  secs.
+#
+dcmf.fit - end
+dataset_name:  ds3
+#
+X0.shape:  (200, 500)
+X1.shape:  (200, 300)
+X2.shape:  (200, 400)
+X3.shape:  (700, 500)
+X4.shape:  (600, 300)
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF:
+---
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+## fold_num:  1  ##
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+dcmf - model construction - start
+__input_transformation - start
+#
+concatenated-matrix construction...
+e_id:  e0
+X_id_list:  ['X0', 'X1', 'X2']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([200, 1200])
+---
+e_id:  e1
+X_id_list:  ['X0', 'X3']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([500, 900])
+---
+e_id:  e2
+X_id_list:  ['X1', 'X4']
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([300, 800])
+---
+e_id:  e3
+X_id_list:  ['X2']
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([400, 200])
+---
+e_id:  e4
+X_id_list:  ['X3']
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([700, 500])
+---
+e_id:  e5
+X_id_list:  ['X4']
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([600, 300])
+---
+#
+concatenated-matrix chunking...
+#
+e_id:  e0 , min_num_datapoints:  200 , num_chunks:  10
+e_id:  e3 , min_features:  200 , k:  100
+#
+e_id:  e0  C_dict[e_id].shape:  torch.Size([200, 1200])
+C_temp_chunks_list[0].shape:  torch.Size([20, 1200])
+---
+e_id:  e1  C_dict[e_id].shape:  torch.Size([500, 900])
+C_temp_chunks_list[0].shape:  torch.Size([50, 900])
+---
+e_id:  e2  C_dict[e_id].shape:  torch.Size([300, 800])
+C_temp_chunks_list[0].shape:  torch.Size([30, 800])
+---
+e_id:  e3  C_dict[e_id].shape:  torch.Size([400, 200])
+C_temp_chunks_list[0].shape:  torch.Size([40, 200])
+---
+e_id:  e4  C_dict[e_id].shape:  torch.Size([700, 500])
+C_temp_chunks_list[0].shape:  torch.Size([70, 500])
+---
+e_id:  e5  C_dict[e_id].shape:  torch.Size([600, 300])
+C_temp_chunks_list[0].shape:  torch.Size([60, 300])
+---
+#
+creating pytorch variables of input matrices...
+#
+__input_transformation - end
+__network_construction - start
+__network_construction - end
+dcmf - model construction - end
+#
+#
+dcmf.fit - start
+epoch:  1  total loss L:  55.672821044921875  Took  0.1  secs.
+epoch:  2  total loss L:  40.732787132263184  Took  0.1  secs.
+epoch:  3  total loss L:  34.746115922927856  Took  0.1  secs.
+epoch:  4  total loss L:  32.01056480407715  Took  0.1  secs.
+epoch:  5  total loss L:  30.24125599861145  Took  0.1  secs.
+epoch:  6  total loss L:  29.05324935913086  Took  0.1  secs.
+epoch:  7  total loss L:  27.762214183807373  Took  0.1  secs.
+epoch:  8  total loss L:  26.801710844039917  Took  0.1  secs.
+epoch:  9  total loss L:  26.076442003250122  Took  0.1  secs.
+epoch:  10  total loss L:  25.401332139968872  Took  0.1  secs.
+epoch:  11  total loss L:  24.787743091583252  Took  0.1  secs.
+epoch:  12  total loss L:  24.176148414611816  Took  0.1  secs.
+epoch:  13  total loss L:  23.614697456359863  Took  0.1  secs.
+epoch:  14  total loss L:  23.094064712524414  Took  0.1  secs.
+epoch:  15  total loss L:  22.60104513168335  Took  0.1  secs.
+epoch:  16  total loss L:  22.242321252822876  Took  0.1  secs.
+epoch:  17  total loss L:  22.110579013824463  Took  0.1  secs.
+epoch:  18  total loss L:  21.97269916534424  Took  0.1  secs.
+epoch:  19  total loss L:  22.4233295917511  Took  0.1  secs.
+epoch:  20  total loss L:  21.635626792907715  Took  0.1  secs.
+epoch:  21  total loss L:  21.20254647731781  Took  0.1  secs.
+epoch:  22  total loss L:  20.037126064300537  Took  0.1  secs.
+epoch:  23  total loss L:  19.421321988105774  Took  0.1  secs.
+epoch:  24  total loss L:  18.833727598190308  Took  0.1  secs.
+epoch:  25  total loss L:  18.3260680437088  Took  0.1  secs.
+epoch:  26  total loss L:  17.933069348335266  Took  0.1  secs.
+epoch:  27  total loss L:  17.556321620941162  Took  0.1  secs.
+epoch:  28  total loss L:  17.196194410324097  Took  0.1  secs.
+epoch:  29  total loss L:  16.86057710647583  Took  0.1  secs.
+epoch:  30  total loss L:  16.557981848716736  Took  0.1  secs.
+epoch:  31  total loss L:  16.318018913269043  Took  0.1  secs.
+epoch:  32  total loss L:  16.20913290977478  Took  0.1  secs.
+epoch:  33  total loss L:  16.52544391155243  Took  0.1  secs.
+epoch:  34  total loss L:  18.009663343429565  Took  0.1  secs.
+epoch:  35  total loss L:  19.81121826171875  Took  0.1  secs.
+epoch:  36  total loss L:  20.848066329956055  Took  0.1  secs.
+epoch:  37  total loss L:  19.39766490459442  Took  0.1  secs.
+epoch:  38  total loss L:  17.533910274505615  Took  0.1  secs.
+epoch:  39  total loss L:  16.938466429710388  Took  0.1  secs.
+epoch:  40  total loss L:  16.751665115356445  Took  0.1  secs.
+epoch:  41  total loss L:  18.156320810317993  Took  0.1  secs.
+epoch:  42  total loss L:  21.40175449848175  Took  0.1  secs.
+epoch:  43  total loss L:  22.21083688735962  Took  0.1  secs.
+epoch:  44  total loss L:  18.434818744659424  Took  0.1  secs.
+epoch:  45  total loss L:  16.842933773994446  Took  0.1  secs.
+epoch:  46  total loss L:  15.775087475776672  Took  0.1  secs.
+epoch:  47  total loss L:  15.237388730049133  Took  0.1  secs.
+epoch:  48  total loss L:  15.302168488502502  Took  0.1  secs.
+epoch:  49  total loss L:  15.707223057746887  Took  0.1  secs.
+epoch:  50  total loss L:  15.9937584400177  Took  0.1  secs.
+epoch:  51  total loss L:  16.52328085899353  Took  0.1  secs.
+epoch:  52  total loss L:  15.818410754203796  Took  0.1  secs.
+epoch:  53  total loss L:  15.377050042152405  Took  0.1  secs.
+epoch:  54  total loss L:  14.98376739025116  Took  0.1  secs.
+epoch:  55  total loss L:  14.278442978858948  Took  0.1  secs.
+epoch:  56  total loss L:  13.924460053443909  Took  0.1  secs.
+epoch:  57  total loss L:  13.511645078659058  Took  0.1  secs.
+epoch:  58  total loss L:  13.301746010780334  Took  0.1  secs.
+epoch:  59  total loss L:  13.127525210380554  Took  0.1  secs.
+epoch:  60  total loss L:  12.985348343849182  Took  0.1  secs.
+epoch:  61  total loss L:  12.858820796012878  Took  0.1  secs.
+epoch:  62  total loss L:  12.818473100662231  Took  0.1  secs.
+epoch:  63  total loss L:  12.875179648399353  Took  0.1  secs.
+epoch:  64  total loss L:  13.013344883918762  Took  0.1  secs.
+epoch:  65  total loss L:  13.540912628173828  Took  0.1  secs.
+epoch:  66  total loss L:  14.523962378501892  Took  0.1  secs.
+epoch:  67  total loss L:  17.00479257106781  Took  0.1  secs.
+epoch:  68  total loss L:  17.164383053779602  Took  0.1  secs.
+epoch:  69  total loss L:  17.499529600143433  Took  0.1  secs.
+epoch:  70  total loss L:  15.056419730186462  Took  0.1  secs.
+epoch:  71  total loss L:  15.529142260551453  Took  0.1  secs.
+epoch:  72  total loss L:  15.4775869846344  Took  0.1  secs.
+epoch:  73  total loss L:  15.20685076713562  Took  0.1  secs.
+epoch:  74  total loss L:  14.775250434875488  Took  0.1  secs.
+epoch:  75  total loss L:  14.5466148853302  Took  0.1  secs.
+epoch:  76  total loss L:  14.74730670452118  Took  0.1  secs.
+epoch:  77  total loss L:  14.637643575668335  Took  0.1  secs.
+epoch:  78  total loss L:  14.981961011886597  Took  0.1  secs.
+epoch:  79  total loss L:  15.6211256980896  Took  0.1  secs.
+epoch:  80  total loss L:  14.102096438407898  Took  0.1  secs.
+epoch:  81  total loss L:  13.205155730247498  Took  0.1  secs.
+epoch:  82  total loss L:  12.553339838981628  Took  0.1  secs.
+epoch:  83  total loss L:  12.477251291275024  Took  0.1  secs.
+epoch:  84  total loss L:  12.493131756782532  Took  0.1  secs.
+epoch:  85  total loss L:  12.61623752117157  Took  0.1  secs.
+epoch:  86  total loss L:  13.328063607215881  Took  0.1  secs.
+epoch:  87  total loss L:  13.791260004043579  Took  0.1  secs.
+epoch:  88  total loss L:  14.871387124061584  Took  0.1  secs.
+epoch:  89  total loss L:  14.664446234703064  Took  0.1  secs.
+epoch:  90  total loss L:  14.599772334098816  Took  0.1  secs.
+epoch:  91  total loss L:  14.16146969795227  Took  0.1  secs.
+epoch:  92  total loss L:  13.924175143241882  Took  0.1  secs.
+epoch:  93  total loss L:  14.191774487495422  Took  0.1  secs.
+epoch:  94  total loss L:  12.847443580627441  Took  0.1  secs.
+epoch:  95  total loss L:  12.30773913860321  Took  0.1  secs.
+epoch:  96  total loss L:  12.374512910842896  Took  0.1  secs.
+epoch:  97  total loss L:  12.270397067070007  Took  0.1  secs.
+epoch:  98  total loss L:  12.426221370697021  Took  0.1  secs.
+epoch:  99  total loss L:  12.51131546497345  Took  0.1  secs.
+epoch:  100  total loss L:  12.755510568618774  Took  0.1  secs.
+#
+dcmf.fit - end
+dataset_name:  dn1
+#
+X0.shape:  (200, 500)
+X1.shape:  (200, 300)
+X2.shape:  (200, 400)
+X3.shape:  (700, 500)
+X4.shape:  (600, 300)
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF:
+---
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+## fold_num:  1  ##
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+dcmf - model construction - start
+__input_transformation - start
+#
+concatenated-matrix construction...
+e_id:  e0
+X_id_list:  ['X0', 'X1', 'X2']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([200, 1200])
+---
+e_id:  e1
+X_id_list:  ['X0', 'X3']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([500, 900])
+---
+e_id:  e2
+X_id_list:  ['X1', 'X4']
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([300, 800])
+---
+e_id:  e3
+X_id_list:  ['X2']
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([400, 200])
+---
+e_id:  e4
+X_id_list:  ['X3']
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([700, 500])
+---
+e_id:  e5
+X_id_list:  ['X4']
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([600, 300])
+---
+#
+concatenated-matrix chunking...
+#
+e_id:  e0 , min_num_datapoints:  200 , num_chunks:  10
+e_id:  e3 , min_features:  200 , k:  100
+#
+e_id:  e0  C_dict[e_id].shape:  torch.Size([200, 1200])
+C_temp_chunks_list[0].shape:  torch.Size([20, 1200])
+---
+e_id:  e1  C_dict[e_id].shape:  torch.Size([500, 900])
+C_temp_chunks_list[0].shape:  torch.Size([50, 900])
+---
+e_id:  e2  C_dict[e_id].shape:  torch.Size([300, 800])
+C_temp_chunks_list[0].shape:  torch.Size([30, 800])
+---
+e_id:  e3  C_dict[e_id].shape:  torch.Size([400, 200])
+C_temp_chunks_list[0].shape:  torch.Size([40, 200])
+---
+e_id:  e4  C_dict[e_id].shape:  torch.Size([700, 500])
+C_temp_chunks_list[0].shape:  torch.Size([70, 500])
+---
+e_id:  e5  C_dict[e_id].shape:  torch.Size([600, 300])
+C_temp_chunks_list[0].shape:  torch.Size([60, 300])
+---
+#
+creating pytorch variables of input matrices...
+#
+__input_transformation - end
+__network_construction - start
+__network_construction - end
+dcmf - model construction - end
+#
+#
+dcmf.fit - start
+epoch:  1  total loss L:  66.58722400665283  Took  0.1  secs.
+epoch:  2  total loss L:  51.93446969985962  Took  0.1  secs.
+epoch:  3  total loss L:  47.60829448699951  Took  0.1  secs.
+epoch:  4  total loss L:  43.49872303009033  Took  0.1  secs.
+epoch:  5  total loss L:  39.717915296554565  Took  0.1  secs.
+epoch:  6  total loss L:  38.043498039245605  Took  0.1  secs.
+epoch:  7  total loss L:  36.746509313583374  Took  0.1  secs.
+epoch:  8  total loss L:  35.52986764907837  Took  0.1  secs.
+epoch:  9  total loss L:  34.45069622993469  Took  0.1  secs.
+epoch:  10  total loss L:  33.450578927993774  Took  0.1  secs.
+epoch:  11  total loss L:  32.500876665115356  Took  0.1  secs.
+epoch:  12  total loss L:  31.587851524353027  Took  0.1  secs.
+epoch:  13  total loss L:  30.690688133239746  Took  0.1  secs.
+epoch:  14  total loss L:  29.81238341331482  Took  0.1  secs.
+epoch:  15  total loss L:  28.96678900718689  Took  0.1  secs.
+epoch:  16  total loss L:  28.183159589767456  Took  0.1  secs.
+epoch:  17  total loss L:  27.506599187850952  Took  0.1  secs.
+epoch:  18  total loss L:  27.033044815063477  Took  0.1  secs.
+epoch:  19  total loss L:  27.041364669799805  Took  0.1  secs.
+epoch:  20  total loss L:  28.41342806816101  Took  0.1  secs.
+epoch:  21  total loss L:  31.544196844100952  Took  0.1  secs.
+epoch:  22  total loss L:  37.9398136138916  Took  0.1  secs.
+epoch:  23  total loss L:  33.4303503036499  Took  0.1  secs.
+epoch:  24  total loss L:  28.140065670013428  Took  0.1  secs.
+epoch:  25  total loss L:  28.83329725265503  Took  0.1  secs.
+epoch:  26  total loss L:  28.84433937072754  Took  0.1  secs.
+epoch:  27  total loss L:  30.12001323699951  Took  0.1  secs.
+epoch:  28  total loss L:  36.38416910171509  Took  0.1  secs.
+epoch:  29  total loss L:  38.61914920806885  Took  0.1  secs.
+epoch:  30  total loss L:  28.51725935935974  Took  0.1  secs.
+epoch:  31  total loss L:  26.783540964126587  Took  0.1  secs.
+epoch:  32  total loss L:  27.69097352027893  Took  0.1  secs.
+epoch:  33  total loss L:  27.66673517227173  Took  0.1  secs.
+epoch:  34  total loss L:  25.955826997756958  Took  0.1  secs.
+epoch:  35  total loss L:  24.96479082107544  Took  0.1  secs.
+epoch:  36  total loss L:  23.339606761932373  Took  0.1  secs.
+epoch:  37  total loss L:  22.38480496406555  Took  0.1  secs.
+epoch:  38  total loss L:  22.133009910583496  Took  0.1  secs.
+epoch:  39  total loss L:  21.98393750190735  Took  0.1  secs.
+epoch:  40  total loss L:  21.856799602508545  Took  0.1  secs.
+epoch:  41  total loss L:  21.716105699539185  Took  0.1  secs.
+epoch:  42  total loss L:  21.635330200195312  Took  0.1  secs.
+epoch:  43  total loss L:  21.686224699020386  Took  0.1  secs.
+epoch:  44  total loss L:  21.961941957473755  Took  0.1  secs.
+epoch:  45  total loss L:  22.665510416030884  Took  0.1  secs.
+epoch:  46  total loss L:  24.48400640487671  Took  0.1  secs.
+epoch:  47  total loss L:  28.19457507133484  Took  0.1  secs.
+epoch:  48  total loss L:  26.34833788871765  Took  0.1  secs.
+epoch:  49  total loss L:  27.769737482070923  Took  0.1  secs.
+epoch:  50  total loss L:  28.03485894203186  Took  0.1  secs.
+epoch:  51  total loss L:  32.84416151046753  Took  0.1  secs.
+epoch:  52  total loss L:  30.525672674179077  Took  0.1  secs.
+epoch:  53  total loss L:  25.27691149711609  Took  0.1  secs.
+epoch:  54  total loss L:  22.306973695755005  Took  0.1  secs.
+epoch:  55  total loss L:  21.270848751068115  Took  0.1  secs.
+epoch:  56  total loss L:  20.66902267932892  Took  0.1  secs.
+epoch:  57  total loss L:  20.09597909450531  Took  0.1  secs.
+epoch:  58  total loss L:  19.688333749771118  Took  0.1  secs.
+epoch:  59  total loss L:  19.405925989151  Took  0.1  secs.
+epoch:  60  total loss L:  19.285106420516968  Took  0.1  secs.
+epoch:  61  total loss L:  19.192201495170593  Took  0.1  secs.
+epoch:  62  total loss L:  19.19533944129944  Took  0.1  secs.
+epoch:  63  total loss L:  19.80959975719452  Took  0.1  secs.
+epoch:  64  total loss L:  21.67444360256195  Took  0.1  secs.
+epoch:  65  total loss L:  22.61027181148529  Took  0.1  secs.
+epoch:  66  total loss L:  24.79705023765564  Took  0.1  secs.
+epoch:  67  total loss L:  22.025257349014282  Took  0.1  secs.
+epoch:  68  total loss L:  21.59741508960724  Took  0.1  secs.
+epoch:  69  total loss L:  21.328625798225403  Took  0.1  secs.
+epoch:  70  total loss L:  21.17159390449524  Took  0.1  secs.
+epoch:  71  total loss L:  21.144184947013855  Took  0.1  secs.
+epoch:  72  total loss L:  20.978982090950012  Took  0.1  secs.
+epoch:  73  total loss L:  21.110525965690613  Took  0.1  secs.
+epoch:  74  total loss L:  19.701072216033936  Took  0.1  secs.
+epoch:  75  total loss L:  18.696598768234253  Took  0.1  secs.
+epoch:  76  total loss L:  18.486888647079468  Took  0.1  secs.
+epoch:  77  total loss L:  18.371142506599426  Took  0.1  secs.
+epoch:  78  total loss L:  19.38542926311493  Took  0.1  secs.
+epoch:  79  total loss L:  20.0281343460083  Took  0.1  secs.
+epoch:  80  total loss L:  20.693285822868347  Took  0.1  secs.
+epoch:  81  total loss L:  21.44870626926422  Took  0.1  secs.
+epoch:  82  total loss L:  20.097225189208984  Took  0.1  secs.
+epoch:  83  total loss L:  19.605234265327454  Took  0.1  secs.
+epoch:  84  total loss L:  18.514500498771667  Took  0.1  secs.
+epoch:  85  total loss L:  17.9120112657547  Took  0.1  secs.
+epoch:  86  total loss L:  17.90789806842804  Took  0.1  secs.
+epoch:  87  total loss L:  17.581634998321533  Took  0.1  secs.
+epoch:  88  total loss L:  18.130987405776978  Took  0.1  secs.
+epoch:  89  total loss L:  18.46264410018921  Took  0.1  secs.
+epoch:  90  total loss L:  18.354503393173218  Took  0.1  secs.
+epoch:  91  total loss L:  19.01069676876068  Took  0.1  secs.
+epoch:  92  total loss L:  18.409377813339233  Took  0.1  secs.
+epoch:  93  total loss L:  18.57747793197632  Took  0.1  secs.
+epoch:  94  total loss L:  18.763626098632812  Took  0.1  secs.
+epoch:  95  total loss L:  19.09484839439392  Took  0.1  secs.
+epoch:  96  total loss L:  19.561543345451355  Took  0.1  secs.
+epoch:  97  total loss L:  18.645668625831604  Took  0.1  secs.
+epoch:  98  total loss L:  17.616402864456177  Took  0.1  secs.
+epoch:  99  total loss L:  17.193941473960876  Took  0.1  secs.
+epoch:  100  total loss L:  16.483845353126526  Took  0.1  secs.
+#
+dcmf.fit - end
+dataset_name:  dn2
+#
+X0.shape:  (200, 500)
+X1.shape:  (200, 300)
+X2.shape:  (200, 400)
+X3.shape:  (700, 500)
+X4.shape:  (600, 300)
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF:
+---
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+## fold_num:  1  ##
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+dcmf - model construction - start
+__input_transformation - start
+#
+concatenated-matrix construction...
+e_id:  e0
+X_id_list:  ['X0', 'X1', 'X2']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([200, 1200])
+---
+e_id:  e1
+X_id_list:  ['X0', 'X3']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([500, 900])
+---
+e_id:  e2
+X_id_list:  ['X1', 'X4']
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([300, 800])
+---
+e_id:  e3
+X_id_list:  ['X2']
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([400, 200])
+---
+e_id:  e4
+X_id_list:  ['X3']
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([700, 500])
+---
+e_id:  e5
+X_id_list:  ['X4']
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([600, 300])
+---
+#
+concatenated-matrix chunking...
+#
+e_id:  e0 , min_num_datapoints:  200 , num_chunks:  10
+e_id:  e3 , min_features:  200 , k:  100
+#
+e_id:  e0  C_dict[e_id].shape:  torch.Size([200, 1200])
+C_temp_chunks_list[0].shape:  torch.Size([20, 1200])
+---
+e_id:  e1  C_dict[e_id].shape:  torch.Size([500, 900])
+C_temp_chunks_list[0].shape:  torch.Size([50, 900])
+---
+e_id:  e2  C_dict[e_id].shape:  torch.Size([300, 800])
+C_temp_chunks_list[0].shape:  torch.Size([30, 800])
+---
+e_id:  e3  C_dict[e_id].shape:  torch.Size([400, 200])
+C_temp_chunks_list[0].shape:  torch.Size([40, 200])
+---
+e_id:  e4  C_dict[e_id].shape:  torch.Size([700, 500])
+C_temp_chunks_list[0].shape:  torch.Size([70, 500])
+---
+e_id:  e5  C_dict[e_id].shape:  torch.Size([600, 300])
+C_temp_chunks_list[0].shape:  torch.Size([60, 300])
+---
+#
+creating pytorch variables of input matrices...
+#
+__input_transformation - end
+__network_construction - start
+__network_construction - end
+dcmf - model construction - end
+#
+#
+dcmf.fit - start
+epoch:  1  total loss L:  74.82575798034668  Took  0.1  secs.
+epoch:  2  total loss L:  60.33701276779175  Took  0.1  secs.
+epoch:  3  total loss L:  52.30231952667236  Took  0.1  secs.
+epoch:  4  total loss L:  48.475916385650635  Took  0.1  secs.
+epoch:  5  total loss L:  45.99940299987793  Took  0.1  secs.
+epoch:  6  total loss L:  44.09406280517578  Took  0.1  secs.
+epoch:  7  total loss L:  42.55671548843384  Took  0.1  secs.
+epoch:  8  total loss L:  41.31022644042969  Took  0.1  secs.
+epoch:  9  total loss L:  40.202093839645386  Took  0.1  secs.
+epoch:  10  total loss L:  39.178478717803955  Took  0.1  secs.
+epoch:  11  total loss L:  38.249085903167725  Took  0.1  secs.
+epoch:  12  total loss L:  37.45398497581482  Took  0.1  secs.
+epoch:  13  total loss L:  36.827539682388306  Took  0.1  secs.
+epoch:  14  total loss L:  36.501301288604736  Took  0.1  secs.
+epoch:  15  total loss L:  36.86906552314758  Took  0.1  secs.
+epoch:  16  total loss L:  39.15396285057068  Took  0.1  secs.
+epoch:  17  total loss L:  41.566879749298096  Took  0.1  secs.
+epoch:  18  total loss L:  39.873095989227295  Took  0.1  secs.
+epoch:  19  total loss L:  35.7822003364563  Took  0.1  secs.
+epoch:  20  total loss L:  34.23787975311279  Took  0.1  secs.
+epoch:  21  total loss L:  33.71083354949951  Took  0.1  secs.
+epoch:  22  total loss L:  34.779781103134155  Took  0.1  secs.
+epoch:  23  total loss L:  39.942235231399536  Took  0.1  secs.
+epoch:  24  total loss L:  47.99150228500366  Took  0.1  secs.
+epoch:  25  total loss L:  41.9273362159729  Took  0.1  secs.
+epoch:  26  total loss L:  34.2314338684082  Took  0.1  secs.
+epoch:  27  total loss L:  32.340773820877075  Took  0.1  secs.
+epoch:  28  total loss L:  31.0597505569458  Took  0.1  secs.
+epoch:  29  total loss L:  30.171690464019775  Took  0.1  secs.
+epoch:  30  total loss L:  30.19808578491211  Took  0.1  secs.
+epoch:  31  total loss L:  29.788259983062744  Took  0.1  secs.
+epoch:  32  total loss L:  28.73337435722351  Took  0.1  secs.
+epoch:  33  total loss L:  28.252674341201782  Took  0.1  secs.
+epoch:  34  total loss L:  28.23800563812256  Took  0.1  secs.
+epoch:  35  total loss L:  28.397833108901978  Took  0.1  secs.
+epoch:  36  total loss L:  28.53541326522827  Took  0.1  secs.
+epoch:  37  total loss L:  28.923791885375977  Took  0.1  secs.
+epoch:  38  total loss L:  28.31974196434021  Took  0.1  secs.
+epoch:  39  total loss L:  28.500002145767212  Took  0.1  secs.
+epoch:  40  total loss L:  29.96208381652832  Took  0.1  secs.
+epoch:  41  total loss L:  33.22597885131836  Took  0.1  secs.
+epoch:  42  total loss L:  33.25327205657959  Took  0.1  secs.
+epoch:  43  total loss L:  30.528048276901245  Took  0.1  secs.
+epoch:  44  total loss L:  27.51647162437439  Took  0.1  secs.
+epoch:  45  total loss L:  26.366228580474854  Took  0.1  secs.
+epoch:  46  total loss L:  25.307122707366943  Took  0.1  secs.
+epoch:  47  total loss L:  24.397969007492065  Took  0.1  secs.
+epoch:  48  total loss L:  23.694450616836548  Took  0.1  secs.
+epoch:  49  total loss L:  23.341076612472534  Took  0.1  secs.
+epoch:  50  total loss L:  23.12360692024231  Took  0.1  secs.
+epoch:  51  total loss L:  22.945486545562744  Took  0.1  secs.
+epoch:  52  total loss L:  22.766212940216064  Took  0.1  secs.
+epoch:  53  total loss L:  22.826842069625854  Took  0.1  secs.
+epoch:  54  total loss L:  23.46155023574829  Took  0.1  secs.
+epoch:  55  total loss L:  24.0274338722229  Took  0.1  secs.
+epoch:  56  total loss L:  25.578503131866455  Took  0.1  secs.
+epoch:  57  total loss L:  27.56335759162903  Took  0.1  secs.
+epoch:  58  total loss L:  27.02137064933777  Took  0.1  secs.
+epoch:  59  total loss L:  25.64249300956726  Took  0.1  secs.
+epoch:  60  total loss L:  27.67781710624695  Took  0.1  secs.
+epoch:  61  total loss L:  29.31800889968872  Took  0.1  secs.
+epoch:  62  total loss L:  38.922367095947266  Took  0.1  secs.
+epoch:  63  total loss L:  29.118871212005615  Took  0.1  secs.
+epoch:  64  total loss L:  26.095484733581543  Took  0.1  secs.
+epoch:  65  total loss L:  24.916372299194336  Took  0.1  secs.
+epoch:  66  total loss L:  25.564422130584717  Took  0.1  secs.
+epoch:  67  total loss L:  27.695139408111572  Took  0.1  secs.
+epoch:  68  total loss L:  31.18988299369812  Took  0.1  secs.
+epoch:  69  total loss L:  27.684256315231323  Took  0.1  secs.
+epoch:  70  total loss L:  25.5084810256958  Took  0.1  secs.
+epoch:  71  total loss L:  23.198902130126953  Took  0.1  secs.
+epoch:  72  total loss L:  22.57452392578125  Took  0.1  secs.
+epoch:  73  total loss L:  21.66026782989502  Took  0.1  secs.
+epoch:  74  total loss L:  20.929707527160645  Took  0.1  secs.
+epoch:  75  total loss L:  20.49747109413147  Took  0.1  secs.
+epoch:  76  total loss L:  20.299293279647827  Took  0.1  secs.
+epoch:  77  total loss L:  20.43764638900757  Took  0.1  secs.
+epoch:  78  total loss L:  20.664596796035767  Took  0.1  secs.
+epoch:  79  total loss L:  21.17912518978119  Took  0.1  secs.
+epoch:  80  total loss L:  22.30802607536316  Took  0.1  secs.
+epoch:  81  total loss L:  21.603939294815063  Took  0.1  secs.
+epoch:  82  total loss L:  21.97158646583557  Took  0.1  secs.
+epoch:  83  total loss L:  22.31449520587921  Took  0.1  secs.
+epoch:  84  total loss L:  21.81904411315918  Took  0.1  secs.
+epoch:  85  total loss L:  22.050832748413086  Took  0.1  secs.
+epoch:  86  total loss L:  21.363113045692444  Took  0.1  secs.
+epoch:  87  total loss L:  21.034732699394226  Took  0.1  secs.
+epoch:  88  total loss L:  21.574774146080017  Took  0.1  secs.
+epoch:  89  total loss L:  20.566741466522217  Took  0.1  secs.
+epoch:  90  total loss L:  21.416360020637512  Took  0.1  secs.
+epoch:  91  total loss L:  22.044265270233154  Took  0.1  secs.
+epoch:  92  total loss L:  22.270792603492737  Took  0.1  secs.
+epoch:  93  total loss L:  23.196234583854675  Took  0.1  secs.
+epoch:  94  total loss L:  25.12851881980896  Took  0.1  secs.
+epoch:  95  total loss L:  23.295469880104065  Took  0.1  secs.
+epoch:  96  total loss L:  23.583255529403687  Took  0.1  secs.
+epoch:  97  total loss L:  22.29141640663147  Took  0.1  secs.
+epoch:  98  total loss L:  21.39608907699585  Took  0.1  secs.
+epoch:  99  total loss L:  21.542036771774292  Took  0.1  secs.
+epoch:  100  total loss L:  20.5086749792099  Took  0.1  secs.
+#
+dcmf.fit - end
+dataset_name:  dn3
+#
+X0.shape:  (200, 500)
+X1.shape:  (200, 300)
+X2.shape:  (200, 400)
+X3.shape:  (700, 500)
+X4.shape:  (600, 300)
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF:
+---
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+## fold_num:  1  ##
+dcmf_base.__init__ - start
+dcmf_base.__init__ - end
+WARNING: The following parameters are unused since no validation data provided.
+val_metric:  auc
+at_k:  10
+is_val_transpose:  True
+#
+dCMF: 
+#
+learning_rate:  0.0001
+weight_decay:  0.01
+convg_thres:  -0.1
+max_epochs:  100
+isPretrain:  False
+pretrain_thres:  0.1
+max_pretrain_epochs:  2
+num_chunks:  10
+k:  100
+kf:  0.0005
+e_actf:  tanh
+d_actf:  tanh
+is_gpu:  True
+gpu_ids:  1
+num entities:  6
+num matrices:  5
+num_val_sets:  1
+X_val #matrices:  0
+val_metric (used only if X_val #matrices > 0):  auc
+at_k (used only if X_val #matrices > 0 and val_metric is r@k or p@k):  10
+is_val_transpose:  True
+is_linear_last_enc_layer:  False
+is_linear_last_dec_layer:  False
+#
+dcmf - model construction - start
+__input_transformation - start
+#
+concatenated-matrix construction...
+e_id:  e0
+X_id_list:  ['X0', 'X1', 'X2']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([200, 1200])
+---
+e_id:  e1
+X_id_list:  ['X0', 'X3']
+X_id:  X0
+X[X_id].shape:  (200, 500)
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([500, 900])
+---
+e_id:  e2
+X_id_list:  ['X1', 'X4']
+X_id:  X1
+X[X_id].shape:  (200, 300)
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([300, 800])
+---
+e_id:  e3
+X_id_list:  ['X2']
+X_id:  X2
+X[X_id].shape:  (200, 400)
+C_dict[e].shape:  torch.Size([400, 200])
+---
+e_id:  e4
+X_id_list:  ['X3']
+X_id:  X3
+X[X_id].shape:  (700, 500)
+C_dict[e].shape:  torch.Size([700, 500])
+---
+e_id:  e5
+X_id_list:  ['X4']
+X_id:  X4
+X[X_id].shape:  (600, 300)
+C_dict[e].shape:  torch.Size([600, 300])
+---
+#
+concatenated-matrix chunking...
+#
+e_id:  e0 , min_num_datapoints:  200 , num_chunks:  10
+e_id:  e3 , min_features:  200 , k:  100
+#
+e_id:  e0  C_dict[e_id].shape:  torch.Size([200, 1200])
+C_temp_chunks_list[0].shape:  torch.Size([20, 1200])
+---
+e_id:  e1  C_dict[e_id].shape:  torch.Size([500, 900])
+C_temp_chunks_list[0].shape:  torch.Size([50, 900])
+---
+e_id:  e2  C_dict[e_id].shape:  torch.Size([300, 800])
+C_temp_chunks_list[0].shape:  torch.Size([30, 800])
+---
+e_id:  e3  C_dict[e_id].shape:  torch.Size([400, 200])
+C_temp_chunks_list[0].shape:  torch.Size([40, 200])
+---
+e_id:  e4  C_dict[e_id].shape:  torch.Size([700, 500])
+C_temp_chunks_list[0].shape:  torch.Size([70, 500])
+---
+e_id:  e5  C_dict[e_id].shape:  torch.Size([600, 300])
+C_temp_chunks_list[0].shape:  torch.Size([60, 300])
+---
+#
+creating pytorch variables of input matrices...
+#
+__input_transformation - end
+__network_construction - start
+__network_construction - end
+dcmf - model construction - end
+#
+#
+dcmf.fit - start
+epoch:  1  total loss L:  75.86780118942261  Took  0.1  secs.
+epoch:  2  total loss L:  59.1001296043396  Took  0.1  secs.
+epoch:  3  total loss L:  53.863051414489746  Took  0.1  secs.
+epoch:  4  total loss L:  49.13196420669556  Took  0.1  secs.
+epoch:  5  total loss L:  46.45373344421387  Took  0.1  secs.
+epoch:  6  total loss L:  44.711308002471924  Took  0.1  secs.
+epoch:  7  total loss L:  43.375208377838135  Took  0.1  secs.
+epoch:  8  total loss L:  42.169923305511475  Took  0.1  secs.
+epoch:  9  total loss L:  41.52684545516968  Took  0.1  secs.
+epoch:  10  total loss L:  41.670531272888184  Took  0.1  secs.
+epoch:  11  total loss L:  41.49052405357361  Took  0.1  secs.
+epoch:  12  total loss L:  43.299399852752686  Took  0.1  secs.
+epoch:  13  total loss L:  41.07894730567932  Took  0.1  secs.
+epoch:  14  total loss L:  38.334731578826904  Took  0.1  secs.
+epoch:  15  total loss L:  36.217928409576416  Took  0.1  secs.
+epoch:  16  total loss L:  35.3208703994751  Took  0.1  secs.
+epoch:  17  total loss L:  34.389859199523926  Took  0.1  secs.
+epoch:  18  total loss L:  33.57606387138367  Took  0.1  secs.
+epoch:  19  total loss L:  32.7949423789978  Took  0.1  secs.
+epoch:  20  total loss L:  32.05489373207092  Took  0.1  secs.
+epoch:  21  total loss L:  31.353729486465454  Took  0.1  secs.
+epoch:  22  total loss L:  30.689446449279785  Took  0.1  secs.
+epoch:  23  total loss L:  30.06323790550232  Took  0.1  secs.
+epoch:  24  total loss L:  29.472815990447998  Took  0.1  secs.
+epoch:  25  total loss L:  28.91621971130371  Took  0.1  secs.
+epoch:  26  total loss L:  28.40110754966736  Took  0.1  secs.
+epoch:  27  total loss L:  27.957026720046997  Took  0.1  secs.
+epoch:  28  total loss L:  27.631229877471924  Took  0.1  secs.
+epoch:  29  total loss L:  27.481056451797485  Took  0.1  secs.
+epoch:  30  total loss L:  27.6228449344635  Took  0.1  secs.
+epoch:  31  total loss L:  28.89657473564148  Took  0.1  secs.
+epoch:  32  total loss L:  37.89893841743469  Took  0.1  secs.
+epoch:  33  total loss L:  43.547029972076416  Took  0.1  secs.
+epoch:  34  total loss L:  37.369120836257935  Took  0.1  secs.
+epoch:  35  total loss L:  33.57072901725769  Took  0.1  secs.
+epoch:  36  total loss L:  41.29802322387695  Took  0.1  secs.
+epoch:  37  total loss L:  34.62335801124573  Took  0.1  secs.
+epoch:  38  total loss L:  42.33756637573242  Took  0.1  secs.
+epoch:  39  total loss L:  60.21171021461487  Took  0.1  secs.
+epoch:  40  total loss L:  42.94370937347412  Took  0.1  secs.
+epoch:  41  total loss L:  35.33523917198181  Took  0.1  secs.
+epoch:  42  total loss L:  30.776408433914185  Took  0.1  secs.
+epoch:  43  total loss L:  28.75516438484192  Took  0.1  secs.
+epoch:  44  total loss L:  27.90220355987549  Took  0.1  secs.
+epoch:  45  total loss L:  26.922259092330933  Took  0.1  secs.
+epoch:  46  total loss L:  26.695971488952637  Took  0.1  secs.
+epoch:  47  total loss L:  26.62315583229065  Took  0.1  secs.
+epoch:  48  total loss L:  27.637396097183228  Took  0.1  secs.
+epoch:  49  total loss L:  26.285183429718018  Took  0.1  secs.
+epoch:  50  total loss L:  25.497440099716187  Took  0.1  secs.
+epoch:  51  total loss L:  24.948650598526  Took  0.1  secs.
+epoch:  52  total loss L:  24.458561182022095  Took  0.1  secs.
+epoch:  53  total loss L:  24.07164764404297  Took  0.1  secs.
+epoch:  54  total loss L:  23.727757453918457  Took  0.1  secs.
+epoch:  55  total loss L:  23.388110399246216  Took  0.1  secs.
+epoch:  56  total loss L:  23.086191654205322  Took  0.1  secs.
+epoch:  57  total loss L:  22.78996443748474  Took  0.1  secs.
+epoch:  58  total loss L:  22.523595571517944  Took  0.1  secs.
+epoch:  59  total loss L:  22.276971340179443  Took  0.1  secs.
+epoch:  60  total loss L:  22.078647136688232  Took  0.1  secs.
+epoch:  61  total loss L:  22.049113988876343  Took  0.1  secs.
+epoch:  62  total loss L:  22.44779133796692  Took  0.1  secs.
+epoch:  63  total loss L:  23.50886869430542  Took  0.1  secs.
+epoch:  64  total loss L:  26.56990885734558  Took  0.1  secs.
+epoch:  65  total loss L:  33.12240433692932  Took  0.1  secs.
+epoch:  66  total loss L:  31.668115854263306  Took  0.1  secs.
+epoch:  67  total loss L:  31.100013732910156  Took  0.1  secs.
+epoch:  68  total loss L:  33.80883288383484  Took  0.1  secs.
+epoch:  69  total loss L:  34.04879641532898  Took  0.1  secs.
+epoch:  70  total loss L:  26.624212741851807  Took  0.1  secs.
+epoch:  71  total loss L:  24.119304180145264  Took  0.1  secs.
+epoch:  72  total loss L:  23.545164585113525  Took  0.1  secs.
+epoch:  73  total loss L:  24.12767791748047  Took  0.1  secs.
+epoch:  74  total loss L:  23.507615089416504  Took  0.1  secs.
+epoch:  75  total loss L:  23.48406410217285  Took  0.1  secs.
+epoch:  76  total loss L:  23.624857664108276  Took  0.1  secs.
+epoch:  77  total loss L:  25.753031253814697  Took  0.1  secs.
+epoch:  78  total loss L:  28.68177342414856  Took  0.1  secs.
+epoch:  79  total loss L:  25.63360071182251  Took  0.1  secs.
+epoch:  80  total loss L:  25.154074668884277  Took  0.1  secs.
+epoch:  81  total loss L:  22.405399799346924  Took  0.1  secs.
+epoch:  82  total loss L:  21.441181421279907  Took  0.1  secs.
+epoch:  83  total loss L:  20.698519468307495  Took  0.1  secs.
+epoch:  84  total loss L:  20.296326875686646  Took  0.1  secs.
+epoch:  85  total loss L:  20.060243129730225  Took  0.1  secs.
+epoch:  86  total loss L:  19.802928805351257  Took  0.1  secs.
+epoch:  87  total loss L:  19.567161560058594  Took  0.1  secs.
+epoch:  88  total loss L:  19.36487376689911  Took  0.1  secs.
+epoch:  89  total loss L:  19.197734713554382  Took  0.1  secs.
+epoch:  90  total loss L:  19.066414713859558  Took  0.1  secs.
+epoch:  91  total loss L:  18.96548557281494  Took  0.1  secs.
+epoch:  92  total loss L:  18.875199794769287  Took  0.1  secs.
+epoch:  93  total loss L:  18.78650391101837  Took  0.1  secs.
+epoch:  94  total loss L:  18.702961325645447  Took  0.1  secs.
+epoch:  95  total loss L:  18.630255341529846  Took  0.1  secs.
+epoch:  96  total loss L:  18.617138385772705  Took  0.1  secs.
+epoch:  97  total loss L:  18.686562538146973  Took  0.1  secs.
+epoch:  98  total loss L:  18.7843416929245  Took  0.1  secs.
+epoch:  99  total loss L:  19.194581985473633  Took  0.1  secs.
+epoch:  100  total loss L:  20.45880937576294  Took  0.1  secs.
+#
+dcmf.fit - end
+done
